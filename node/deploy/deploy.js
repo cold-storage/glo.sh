@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
-/*
-  So my job is to template out all the files to an out dir folder.
-  I write the folder to STDOUT so the following process can sync
-  the folder with S3.
-*/
+// My job is to template out all the files to an out dir.
+// I write the out dir to STDOUT at the end so the following
+// process can sync it with S3.
 
 const fs = require('fs');
 const os = require('os');
