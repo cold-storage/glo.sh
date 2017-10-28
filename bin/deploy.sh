@@ -8,4 +8,4 @@ rm -rf node_modules
 npm install
 . ~/.nvm/nvm.sh
 nvm use 6
-./deploy.js
+echo "Here are the results $(./deploy.js)"
