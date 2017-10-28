@@ -3,7 +3,7 @@ set -e
 #
 # Check and see if I have been updated.
 # If not, do nothing. If yes, run my deployment script.
-# 
+#
 # We can run this every minute.
 # crontab -e
 # * * * * * ~/somewhere/bin/pullme.sh >/dev/null 2>&1
