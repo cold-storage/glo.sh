@@ -1,2 +1,3 @@
 # glo.sh
-Tech Notes
+
+Glo Dot Sh
