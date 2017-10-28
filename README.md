@@ -1,0 +1,2 @@
+# glo.sh
+Tech Notes
