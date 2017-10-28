@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-echo 'Deploying . . . '
-
+cd ../node/deploy
+rm -rf node_modules
+npm install
+./deploy.js
