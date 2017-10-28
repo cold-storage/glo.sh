@@ -6,5 +6,6 @@ echo "MY DIR: $MY_DIR"
 cd ../node/deploy
 rm -rf node_modules
 npm install
+. ~/.nvm/nvm.sh
 nvm use 6
 ./deploy.js
