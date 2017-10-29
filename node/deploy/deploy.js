@@ -18,8 +18,8 @@ marked.setOptions({
 const wrapper = fs.readFileSync('wrapper.html', 'utf8');
 const template = dot.template(wrapper);
 const indexTemplate = dot.template(fs.readFileSync('index.html', 'utf8'));
-const folder = '../../';
-process.chdir(folder);
+// cd to project root.
+process.chdir('../../');
 
 function makeid() {
   var text = "";
@@ -43,11 +43,13 @@ function getTitle(mdString) {
 const indexIt = {
   older: []
 };
+
 function doIndexPage() {
   fs.writeFileSync(
-    path.join(outDir,'index.html'),
+    path.join(outDir, 'index.html'),
     indexTemplate(indexIt));
 }
+
 function doTemplate(year, mdFile) {
   mkdirp.sync(path.join(outDir, year));
   const htmlFilePath =
@@ -68,6 +70,18 @@ function doTemplate(year, mdFile) {
   const result = template(it);
   fs.writeFileSync(htmlFilePath, result);
 }
+
+function doJsCss() {
+  mkdirp.sync(path.join(outDir, 'jscss'));
+  fs.writeFileSync(
+    path.join(outDir, 'jscss', 'blog.css'),
+    fs.readFileSync(
+      path.join('node', 'deploy', 'jscss', 'blog.css')));
+  fs.writeFileSync(
+    path.join(outDir, 'jscss', 'bootstrap.min.css'),
+    fs.readFileSync(
+      path.join('node', 'deploy', 'jscss', 'bootstrap.min.css')));
+}
 fs.readdirSync('.').forEach(year => {
   // Loop any folders in glo root whose names are years (4 digits).
   if (year.match('\\d\{4\}')) {
@@ -80,6 +94,7 @@ fs.readdirSync('.').forEach(year => {
   }
 });
 doIndexPage();
+doJsCss();
 // Write outDir to STDOUT so following process knows
 // which folder to sync with S3.
 console.log(outDir);
