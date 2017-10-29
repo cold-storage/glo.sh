@@ -6,7 +6,7 @@ set -e
 #
 # We can run this every minute.
 # crontab -e
-# * * * * * ~/somewhere/bin/pullme.sh >/dev/null 2>&1
+# * * * * * /home/ubuntu/glo.sh/bin/pullme.sh >/dev/null 2>&1
 
 MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 OUTPUT="$(git pull)"
