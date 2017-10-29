@@ -1,4 +1,4 @@
-# A Simple, Rock Solid Web Infrastructure
+# Simple, Rock Solid Web Infrastructure
 
 I've been thinking through how to build a rock solid, super fast,
 super inexpensive web infrastructure for quite a while.
