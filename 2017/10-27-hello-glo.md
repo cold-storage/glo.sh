@@ -1,3 +1,0 @@
-# Hello Glo
-
-Goodnight!
