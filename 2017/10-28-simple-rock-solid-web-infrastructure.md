@@ -3,7 +3,7 @@
 I've been thinking through how to build a rock solid, super fast,
 super inexpensive web infrastructure for quite a while.
 I recently got all the pieces working together. 
-It's amazing what you can do on Amazon for dirt cheap.
+It's amazing what you can do on Amazon for dirt cheap.  
 
 Here is the feature set.
 
