@@ -15,9 +15,9 @@ marked.setOptions({
     return require('highlight.js').highlightAuto(code).value;
   }
 });
-const wrapper = fs.readFileSync('wrapper.html', 'utf8');
+// const wrapper = fs.readFileSync('wrapper.html', 'utf8');
 const template = dot.template(wrapper);
-const indexTemplate = dot.template(fs.readFileSync('index.html', 'utf8'));
+const wrapper = indexTemplate = dot.template(fs.readFileSync('index.html', 'utf8'));
 // cd to project root.
 process.chdir('../../');
 
