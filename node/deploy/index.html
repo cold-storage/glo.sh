@@ -1,22 +1,63 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8"/>
-<title>{{=it.title}}</title>
-</head>
-<body>
-<script>
-if (location.protocol != 'https:') {
-  location.href = 'https:' +
-  window.location.href.substring(window.location.protocol.length);
-}
-</script>
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Tech Notes">
+    <meta name="author" content="John Stein">
+<!--     <link rel="icon" href="https://getbootstrap.com/favicon.ico"> -->
+    <title>{{=it.title}}</title>
+    <link href="./jscss/bootstrap.min.css" rel="stylesheet">
+    <link href="./jscss/blog.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <div class="blog-masthead">
+        <div class="container">
+          <nav class="nav">
+            <a class="nav-link active" href="/index.html"
+            >Glo! Tech Notes by John Stein</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h2 class="blog-post-title">{{=it.title}}</h2>
+            <p class="blog-post-meta">{{=it.date}}</p>
 {{=it.html}}
-<hr>
-<ul>
+          </div><!-- /.blog-post -->
+
+
+        </div><!-- /.blog-main -->
+
+        <aside class="col-sm-3 ml-sm-auto blog-sidebar">
+          <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
 {{~it.older :value:index}}
 <li><a href="{{=value.link}}">{{=value.title}}</a></li>
 {{~}}
-</ul>
-</body>
-</html>
+            </ol>
+          </div>
+        </aside><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </main><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Glo! Tech Notes by John Stein</p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--     <script src="./jscss/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+ --><!--     <script src="./jscss/popper.min.js"></script>
+ -->
+ <!-- <script src="./jscss/bootstrap.min.js"></script>
+ -->
+</body></html>
