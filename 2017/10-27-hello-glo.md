@@ -1,3 +1,3 @@
 # Hello Glo
 
-Hello glo. We hope you do well. Here is a change. And another.
+Hello glo. We hope you do well. Here is a change. And another. And . . . 
