@@ -32,3 +32,6 @@ If your domain contact information is private or otherwise not listed
 on whois, and you need to 
 be able to receive email at one of the standard addresses for your
 domain you may want to try https://forwardmx.io
+
+If you want free certs that renew automatically for non-AWS services
+https://letsencrypt.org is great too.
