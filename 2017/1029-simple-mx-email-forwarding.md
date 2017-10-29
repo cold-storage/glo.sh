@@ -12,4 +12,4 @@ each one.
 You will need to be able to edit the MX records for your domain. There are 
 lots of instructions all over the internet for this.
 
-It's $9.00/yr for 5 domains. $29.00./yr for 25 domains. $99.00/yr for unlimited.
+It's $9.00/yr for 5 domains. $29.00/yr for 25 domains. $99.00/yr for unlimited.
