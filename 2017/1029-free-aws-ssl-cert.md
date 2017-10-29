@@ -17,8 +17,7 @@ contacts listed in whois.
 * Administrative contact
 
 Certificate Manager will also send the confirmation email to the following
-addresses in case your contact information is not available on whois
-you can still confirm.
+addresses in case your contact information is not available on whois.
 
 * administrator@your_domain_name
 * hostmaster@your_domain_name
