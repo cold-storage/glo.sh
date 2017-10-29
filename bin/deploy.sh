@@ -6,11 +6,11 @@ cd $MY_DIR
 cd ../node/deploy
 rm -rf node_modules
 npm install > /dev/null 2>&1
-rm package-lock.json
+rm -rf node_modules
+rm -rf package-lock.json
 . ~/.nvm/nvm.sh > /dev/null 2>&1
 nvm use 6 > /dev/null 2>&1
 SYNC_DIR="$(./deploy.js)"
-rm -rf node_modules
 aws s3 sync $SYNC_DIR s3://glo.sh/$GIT_BRANCH
 aws cloudfront create-invalidation \
   --distribution-id E29S1AZ8HEMEO5 \
