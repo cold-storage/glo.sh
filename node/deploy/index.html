@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>{{ =it.title }}</title>
+</head>
+<body>
+<script>
+if (location.protocol != 'https:') {
+  location.href = 'https:' +
+  window.location.href.substring(window.location.protocol.length);
+}
+</script>
+{{ =it.html }}
+<hr>
+<ul>
+{{~it.older :value:index}}
+<li><a href="{{=value.link}}">{{=value.title}}</a></li>
+{{~}}
+</ul>
+</body>
+</html>

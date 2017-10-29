@@ -17,6 +17,7 @@ marked.setOptions({
 });
 const wrapper = fs.readFileSync('wrapper.html', 'utf8');
 const template = dot.template(wrapper);
+const indexTemplate = dot.template(fs.readFileSync('index.html', 'utf8'));
 const folder = '../../';
 process.chdir(folder);
 
@@ -39,16 +40,31 @@ function getTitle(mdString) {
   }
   return 'NO TITLE';
 }
-
+const indexIt = {
+  older: [];
+};
+function doIndexPage() {
+  fs.writeFileSync(
+    path.join(outDir,'index.html'),
+    indexTemplate(indexIt));
+}
 function doTemplate(year, mdFile) {
   mkdirp.sync(path.join(outDir, year));
   const htmlFilePath =
     path.join(outDir, year, mdFile.replace('.md', ''));
+  const olderLink =
+    path.join(year, mdFile.replace('.md', ''));
   const mdString = fs.readFileSync(path.join(year, mdFile), 'utf8');
   const it = {
     html: marked(mdString),
     title: getTitle(mdString)
   }
+  indexIt.html = it.html;
+  indexIt.title = it.title;
+  indexIt.older.push({
+    link: olderLink,
+    title: it.title
+  });
   const result = template(it);
   fs.writeFileSync(htmlFilePath, result);
 }
@@ -63,6 +79,7 @@ fs.readdirSync('.').forEach(year => {
     });
   }
 });
+doIndexPage();
 // Write outDir to STDOUT so following process knows
 // which folder to sync with S3.
 console.log(outDir);
