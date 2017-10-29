@@ -25,7 +25,7 @@ addresses in case your contact information is not available on whois.
 * webmaster@your_domain_name
 * admin@your_domain_name
 
-So for a single certificate you may actually receive eight confirmation 
+For a single certificate request you may receive up to eight confirmation 
 emails. But you only need to reply to one of them.
 
 If your domain contact information is private or otherwise not listed
