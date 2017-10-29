@@ -94,7 +94,7 @@ fs.readdirSync('.').forEach(year => {
   }
 });
 doIndexPage();
-doJsCss();
+//doJsCss();
 // Write outDir to STDOUT so following process knows
 // which folder to sync with S3.
 console.log(outDir);
