@@ -59,9 +59,11 @@ function templateOutFiles() {
   let older = [];
   its.forEach(function(it) {
     older.push(it);
+  });
+  its.forEach(function(it) {
     it.older = older;
   });
-  console.log(JSON.stringify(its,null,2));
+  //console.log(JSON.stringify(older,null,2));
   for (let i = 0, l = its.length; i < l; i++) {
     if (i === 0) {
       fs.writeFileSync(
