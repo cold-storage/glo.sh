@@ -41,7 +41,7 @@ function getTitle(mdString) {
   return 'NO TITLE';
 }
 const indexIt = {
-  older: [];
+  older: []
 };
 function doIndexPage() {
   fs.writeFileSync(
