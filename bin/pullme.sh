@@ -16,5 +16,3 @@ OUTPUT="$(git pull)"
 if [[ "$OUTPUT" != *"Already up-to-date"* ]]; then
   $MY_DIR/deploy.sh
 fi
-
-
