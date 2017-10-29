@@ -5,8 +5,8 @@ GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 cd $MY_DIR
 cd ../node/deploy
 rm -rf node_modules
-npm install > /dev/null 2>&1
 . ~/.nvm/nvm.sh > /dev/null 2>&1
+npm install > /dev/null 2>&1
 nvm use 6 > /dev/null 2>&1
 SYNC_DIR="$(./deploy.js)"
 rm -rf node_modules
