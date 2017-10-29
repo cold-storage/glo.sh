@@ -9,6 +9,8 @@ set -e
 # * * * * * /home/ubuntu/glo.sh/bin/pullme.sh >/dev/null 2>&1
 
 MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $MY_DIR
+cd ..
 OUTPUT="$(git pull)"
 
 if [ "$OUTPUT" != "Already up-to-date." ]; then
