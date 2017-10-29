@@ -38,14 +38,35 @@ function getTitle(mdString) {
   }
   return 'NO TITLE';
 }
-const indexIt = {
-  older: []
-};
 
-function doIndexPage() {
-  fs.writeFileSync(
-    path.join(outDir, 'index.html'),
-    template(indexIt));
+const its = [];
+// const indexIt = {
+//   older: []
+// };
+
+// reverse sort array on sortPath
+function compare(a, b) {
+  if (a.sortPath > b.sortPath)
+    return -1;
+  if (a.sortPath < b.sortPath)
+    return 1;
+  return 0;
+}
+
+objs.sort(compare);
+
+function templateOutFiles() {
+  its.sort(compare);
+  for (let i = 0, l = its.length; i < l; i++) {
+    if (i === 0) {
+      fs.writeFileSync(
+        path.join(outDir, 'index.html'),
+        template(its[i]));
+    }
+    fs.writeFileSync(
+      its[i].filePath,
+      template(its[i]));
+  }
 }
 
 function doTemplate(year, mdFile) {
@@ -55,18 +76,20 @@ function doTemplate(year, mdFile) {
   const olderLink =
     path.join(year, mdFile.replace('.md', ''));
   const mdString = fs.readFileSync(path.join(year, mdFile), 'utf8');
-  const it = {
+  its.push({
     html: marked(mdString),
-    title: getTitle(mdString)
-  }
-  indexIt.html = it.html;
-  indexIt.title = it.title;
-  indexIt.older.push({
-    link: olderLink,
-    title: it.title
+    title: getTitle(mdString),
+    filePath: htmlFilePath,
+    sortPath: path.join(year, mdFile)
   });
-  const result = template(it);
-  fs.writeFileSync(htmlFilePath, result);
+  // indexIt.html = it.html;
+  // indexIt.title = it.title;
+  // indexIt.older.push({
+  //   link: olderLink,
+  //   title: it.title
+  // });
+  // const result = template(it);
+  // fs.writeFileSync(htmlFilePath, result);
 }
 
 function doJsCss() {
@@ -91,7 +114,7 @@ fs.readdirSync('.').forEach(year => {
     });
   }
 });
-doIndexPage();
+templateOutFiles();
 doJsCss();
 // Write outDir to STDOUT so following process knows
 // which folder to sync with S3.
