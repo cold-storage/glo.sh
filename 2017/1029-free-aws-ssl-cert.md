@@ -1,10 +1,12 @@
 # Free SSL Certs from Amazon
 
-In 2016 Amazon launched its AWS Certificate Manager. This gives you free
+In 2016 Amazon launched its AWS Certificate Manager -- free
 SSL certs for use with AWS services like CloudFront and Elastic Load Balancer.
+Certificate Manager allows for multiple subdomains per cert and 
+automatially renews certs before they expire.
 
-The only requirement is you need to be able to receive a verification email
-for your domain.
+The only requirement is the ability to receive the verification email
+they will send to make sure you control the domain(s).
 
 If your domain contact information is publicly accessible on whois,
 Certificate Manager will send a confirmation email to the following
