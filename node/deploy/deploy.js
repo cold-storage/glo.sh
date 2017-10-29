@@ -43,7 +43,7 @@ function getTitle(mdString) {
 function doTemplate(year, mdFile) {
   mkdirp.sync(path.join(outDir, year));
   const htmlFilePath =
-    path.join(outDir, year, mdFile.replace('.md', '.html'));
+    path.join(outDir, year, mdFile.replace('.md', ''));
   const mdString = fs.readFileSync(path.join(year, mdFile), 'utf8');
   const it = {
     html: marked(mdString),
