@@ -87,7 +87,7 @@ function doTemplate(year, mdFile) {
     html: marked(mdString),
     title: getTitle(mdString),
     filePath: htmlFilePath,
-    link: path.join(year, mdFile.replace('.md', ''))
+    link: path.join('/', year, mdFile.replace('.md', ''))
   });
   // indexIt.html = it.html;
   // indexIt.title = it.title;
