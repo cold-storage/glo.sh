@@ -45,11 +45,11 @@ const its = [];
 //   older: []
 // };
 
-// reverse sort array on sortPath
+// reverse sort array on link
 function compare(a, b) {
-  if (a.sortPath > b.sortPath)
+  if (a.link > b.link)
     return -1;
-  if (a.sortPath < b.sortPath)
+  if (a.link < b.link)
     return 1;
   return 0;
 }
@@ -87,7 +87,7 @@ function doTemplate(year, mdFile) {
     html: marked(mdString),
     title: getTitle(mdString),
     filePath: htmlFilePath,
-    sortPath: path.join(year, mdFile)
+    link: path.join(year, mdFile.replace('.md', ''))
   });
   // indexIt.html = it.html;
   // indexIt.title = it.title;
