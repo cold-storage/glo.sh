@@ -53,8 +53,6 @@ function compare(a, b) {
   return 0;
 }
 
-objs.sort(compare);
-
 function templateOutFiles() {
   its.sort(compare);
   for (let i = 0, l = its.length; i < l; i++) {
