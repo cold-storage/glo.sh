@@ -14,5 +14,3 @@ aws s3 sync --delete --content-type text/html $SYNC_DIR s3://glo.sh/$GIT_BRANCH
 aws cloudfront create-invalidation \
   --distribution-id E29S1AZ8HEMEO5 \
   --paths '/*'
-
-
