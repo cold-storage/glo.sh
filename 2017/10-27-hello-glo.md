@@ -1,3 +1,3 @@
 # Hello Glo
 
-Hello glo.
+Hello glow.
