@@ -40,6 +40,7 @@ function getTitle(mdString) {
 }
 
 const its = [];
+
 // const indexIt = {
 //   older: []
 // };
@@ -55,6 +56,11 @@ function compare(a, b) {
 
 function templateOutFiles() {
   its.sort(compare);
+  let older = [];
+  its.forEach(function(it) {
+    older.push(it);
+    it.older = older;
+  });
   for (let i = 0, l = its.length; i < l; i++) {
     if (i === 0) {
       fs.writeFileSync(
