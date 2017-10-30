@@ -41,10 +41,6 @@ function getTitle(mdString) {
 
 const its = [];
 
-// const indexIt = {
-//   older: []
-// };
-
 // reverse sort array on link
 function compare(a, b) {
   if (a.link > b.link)
@@ -56,6 +52,8 @@ function compare(a, b) {
 
 function templateOutFiles() {
   its.sort(compare);
+  // Each of the articles needs a list of all the other articles
+  // which we are calling 'older'.
   let older = [];
   its.forEach(function(it) {
     older.push(it);
@@ -63,7 +61,8 @@ function templateOutFiles() {
   its.forEach(function(it) {
     it.older = older;
   });
-  //console.log(JSON.stringify(older,null,2));
+  // Now just template out all the pages with the first page
+  // also being written out as index.html
   for (let i = 0, l = its.length; i < l; i++) {
     if (i === 0) {
       fs.writeFileSync(
@@ -76,6 +75,8 @@ function templateOutFiles() {
   }
 }
 
+// Just push all the info we need into our list of model objects
+// AKA 'its'
 function doTemplate(year, mdFile) {
   mkdirp.sync(path.join(outDir, year));
   const htmlFilePath =
@@ -89,16 +90,9 @@ function doTemplate(year, mdFile) {
     filePath: htmlFilePath,
     link: path.join('/', year, mdFile.replace('.md', ''))
   });
-  // indexIt.html = it.html;
-  // indexIt.title = it.title;
-  // indexIt.older.push({
-  //   link: olderLink,
-  //   title: it.title
-  // });
-  // const result = template(it);
-  // fs.writeFileSync(htmlFilePath, result);
 }
 
+// Also need to push our one css and one js file.
 function doJsCss() {
   mkdirp.sync(path.join(outDir, 'jscss'));
   fs.writeFileSync(
@@ -110,8 +104,9 @@ function doJsCss() {
     fs.readFileSync(
       path.join('node', 'deploy', 'jscss', 'bootstrap.min.css')));
 }
+
+// Loop any folders in glo root whose names are years (4 digits).
 fs.readdirSync('.').forEach(year => {
-  // Loop any folders in glo root whose names are years (4 digits).
   if (year.match('\\d\{4\}')) {
     fs.readdirSync(year).forEach(mdFile => {
       // Process any .md files in those folders.
@@ -123,6 +118,7 @@ fs.readdirSync('.').forEach(year => {
 });
 templateOutFiles();
 doJsCss();
+
 // Write outDir to STDOUT so following process knows
 // which folder to sync with S3.
 console.log(outDir);
