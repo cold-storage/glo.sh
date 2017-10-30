@@ -5,12 +5,6 @@ super inexpensive web infrastructure for quite a while.
 I recently got all the pieces working together. 
 It's amazing what you can do on Amazon for dirt cheap.  
 
-```javascript
-for (let i = 0, l = foo.length; i < l; i++) {
-  doFoo(foo[i]);
-}
-```
-
 Here is the feature set.
 
 * Blazing fast CDN for static pieces
