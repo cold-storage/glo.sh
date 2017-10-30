@@ -10,18 +10,18 @@ const path = require('path');
 const marked = require('marked');
 const mkdirp = require('mkdirp');
 const dot = require('dot');
-// marked.setOptions({
-//   highlight: function(code) {
-//     return require('highlight.js').highlightAuto(code).value;
-//   }
-// });
 marked.setOptions({
-  highlight: function (code, lang, callback) {
-    require('pygmentize-bundled')({ lang: lang, format: 'html' }, code, function (err, result) {
-      callback(err, result.toString());
-    });
+  highlight: function(code) {
+    return require('highlight.js').highlightAuto(code).value;
   }
 });
+// marked.setOptions({
+//   highlight: function (code, lang, callback) {
+//     require('pygmentize-bundled')({ lang: lang, format: 'html' }, code, function (err, result) {
+//       callback(err, result.toString());
+//     });
+//   }
+// });
 const template = dot.template(fs.readFileSync('index.html', 'utf8'));
 // cd to project root.
 process.chdir('../../');
