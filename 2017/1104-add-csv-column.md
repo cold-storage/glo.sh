@@ -1,4 +1,6 @@
-# Add Fixed Value Column to CSV File
+# Add Column to CSV File
+
+This will add a column with a fixed value to a CSV file.
 
 ```shell
 #!/usr/bin/env bash
