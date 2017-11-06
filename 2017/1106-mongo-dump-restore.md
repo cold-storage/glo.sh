@@ -11,6 +11,13 @@ following commands.
 docker run --name scrap_mongo --rm -it mongo bash
 ```
 
+Set passwords as environment variables.
+
+```bash
+export HEROKU_PW='***'
+export AZURE_PW='***'
+```
+
 Export the data from Heroku. 
 Your host, port, username, password, and db will be different.
 
