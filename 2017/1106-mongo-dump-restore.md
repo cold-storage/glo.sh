@@ -1,7 +1,7 @@
 # Migrate MongoDB from Heroku to Azure
 
-If you have a relatively small MongoDB that you need to migrate from Heroku
-to Azure, this will do the trick.
+If you have a relatively small MongoDB that you need to export from Heroku
+and import into Azure, this will do the trick.
 
 If you don't have MongoDB installed on your machine, but you do have 
 Docker, this will get you to a bash prompt where you can run the
