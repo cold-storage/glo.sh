@@ -1,6 +1,6 @@
 # Apex XMLNode to String
 
-Salesforce has a method in Apex to turn a `Dom.Document` into a `String`, but not 
+Salesforce has a method to turn a `Dom.Document` into a `String`, but not 
 an `XMLNode`.
 
 If your XML is just elements with more elements or elements with text,
