@@ -3,7 +3,7 @@
 Salesforce doesn't have great XML handling. It would be nice if there 
 were full XPath support.
 
-However, if you have a simple XML structure that's more JSONish
+However, if you have a simple XML structure that's more JSON-ish
 like the XML below, the code below should work.
 
 ```java
