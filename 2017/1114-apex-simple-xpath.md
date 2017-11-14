@@ -1,4 +1,4 @@
-# Poor Man's Xpath
+# Apex Poor Man's Xpath
 
 Salesforce doesn't have great XML handling. It would be nice if there 
 were full XPath support.
