@@ -29,7 +29,7 @@ The code below will output this string if you hand it an `XMLNode`.
 **The Code**
 
 ```java
-// We assume all nodes Either have text OR have more nodes.
+// We assume all nodes either have text or have more nodes. 
 // Nothing else.
 public static String toXmlString(DOM.XMLNode node) {
   String result = '';
