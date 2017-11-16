@@ -69,14 +69,34 @@ public class Xpath {
       pa.remove(0);
       return getObject(String.join(pa, '.'), o);
     } else {
-      return ((Dom.XmlNode)o).getText().trim;
+      return ((Dom.XmlNode)o).getText().trim();
     }
   }
   public String getString(String path) {
     return (String) getObject(path);
   }
   public Integer getInteger(String path) {
-    return Integer.valueOf(getObject(path));
+    return Integer.valueOf(getString(path));
+  }
+  public Decimal getDecimal(String path) {
+    return Decimal.valueOf(getString(path));
+  }
+  public Boolean getBoolean(String path) {
+    String s = getString(path);
+    return s == 'true';
+  }
+  // Birthdate looks like this: 1960-07-14T05:00:00Z
+  public Date getDate(String path) {
+    String s = getString(path);
+    if (s != null) {
+      String[] a = s.split('T');
+      a = a[0].split('-');
+      return Date.newInstance(
+               Integer.valueOf(a[0]),
+               Integer.valueOf(a[1]),
+               Integer.valueOf(a[2]));
+    }
+    return null;
   }
 }
 ```
