@@ -36,7 +36,8 @@ public static String toXmlString(DOM.XMLNode node) {
   if (node.getNodeType() == DOM.XMLNodeType.ELEMENT) {
     result += '\n<' + node.getName() + '>';
     if (node.getText().trim() != '') {
-      result += node.getText().trim();
+      result += node.getText().trim()
+      .replace('&', '&amp;').replace('<', '&lt;');
       return result + '</' + node.getName() + '>';
     } else {
       for (Dom.XMLNode child : node.getChildElements()) {
