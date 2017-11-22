@@ -1,10 +1,15 @@
-# Salesforce APEX Set Id from External Id
+# Salesforce Set Ids in a List from External Ids
 
-Sometimes you want to update objects if they exist and fail if they
-don't. In this case you can't upsert on the external id. You have to
-set the id from a lookup on the external id.
+In Salesforce migrations and integrations, sometimes you want to update 
+objects if they exist and do nothing or fail if they don't.
 
-This will do the trick.
+Upsert would be nice, but there's no way to tell upsert, "Hey do nothing
+or fail if this object doesn't exist."
+
+This Salesforce APEX code will do the trick.
+
+Might be nice to add optional parameter to remove the item from 
+the list if there's no existing object in Salesforce.
 
 ```java
 //
