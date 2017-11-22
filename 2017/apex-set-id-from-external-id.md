@@ -2,7 +2,7 @@
 
 Sometimes you want to update objects if they exist and fail if they
 don't. In this case you can't upsert on the external id. You have to
-set the id by looking up on the external id.
+set the id from a lookup on the external id.
 
 This will do the trick.
 
