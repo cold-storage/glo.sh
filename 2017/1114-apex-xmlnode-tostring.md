@@ -3,15 +3,14 @@
 Salesforce has a method to turn a `Dom.Document` into a `String`, but not 
 an `XMLNode`.
 
-If your XML is just elements with more elements or elements with text,
-this will do the job.
+If your XML is super crazy this will do the job.
 
 **Sample Output**
 
 The code below will output this string if you hand it an `XMLNode`.
 
 ```xml
-<Record> 
+<Record someAttr="foo"> 
   <ConsId>1164943</ConsId> 
   <ConsName> 
     <FirstName>Bertha</FirstName> 
@@ -29,29 +28,42 @@ The code below will output this string if you hand it an `XMLNode`.
 **The Code**
 
 ```java
-// We assume all nodes either have text or have more nodes. 
-// Nothing else.
-public static String toXmlString(DOM.XMLNode node) {
-  String result = '';
-  if (node.getNodeType() == DOM.XMLNodeType.ELEMENT) {
-    result += '\n<' + node.getName() + '>';
-    if (node.getText().trim() != '') {
-      result += node.getText().trim()
-      .replace('&', '&amp;').replace('<', '&lt;');
-      return result + '</' + node.getName() + '>';
-    } else {
-      for (Dom.XMLNode child : node.getChildElements()) {
-        result += toXmlString(child);
-      }
-      // Don't output empty elements.
-      if (result == '\n<' + node.getName() + '>') {
-        result = '';
-      } else {
-        result += '\n</' + node.getName() + '>';
-      }
-      return result;
+  public static String getAttrString(Dom.XMLNode node) {
+    String s = '';
+    for (Integer i = 0, l = node.getAttributeCount(); i < l; i++) {
+      s += ' ' + node.getAttributeKeyAt(i) + '="'
+           + node.getAttributeValue(node.getAttributeKeyAt(i), null)
+           + '"';
     }
+    return s;
   }
-  throw new MyException('Should never reach here.');
-}
+  /*
+    Doesn't handle fancy stuff like CDATA and mixed content.
+  */
+  public static String toXmlString(DOM.XMLNode node) {
+    String result = '';
+    if (node.getNodeType() == DOM.XMLNodeType.ELEMENT) {
+      result += '\n<' + node.getName();
+      String attrStr = getAttrString(node);
+      result += attrStr;
+      if (node.getChildElements().size() > 0 || node.getText().trim() != '') {
+        result += '>';
+      }
+      if (node.getText().trim() != '') {
+        result += node.getText().trim().replace('&', '&amp;').replace('<', '&lt;');
+        return result + '</' + node.getName() + '>';
+      } else {
+        for (Dom.XMLNode child : node.getChildElements()) {
+          result += toXmlString(child);
+        }
+        if (node.getChildElements().size() > 0 || node.getText().trim() != '') {
+            result += '\n</' + node.getName() + '>';
+        } else {
+          result += ' />';
+        }
+        return result;
+      }
+    }
+    throw new MyException('Should never reach here.');
+  }
 ```
