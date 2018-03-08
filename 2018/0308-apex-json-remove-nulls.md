@@ -1,3 +1,5 @@
+# Remove null keys and values from JSON in APEX
+
 Some RESTish web services serve up JSON with null values. 
 Often you don't want to overwrite Salesforce values with null. 
 For example, your Salesforce Contact, Joe, has an email address, but
