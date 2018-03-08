@@ -1,4 +1,4 @@
-# Remove null keys and values from JSON in APEX
+# Remove null keys and values from JSON for SObjects
 
 Some RESTish web services serve up JSON with null values. 
 Often you don't want to overwrite Salesforce values with null. 
@@ -7,7 +7,8 @@ the external system you are syncing with doesn't. You don't
 want to overwrite Joe's email with null.
 In your Salesforce Apex code when you turn this JSON into an 
 SObject, it keeps the nulls (even if you specify suppressApexObjectNulls).
-This method removes the nulls.
+suppressApexObjectNulls works with custom objects, but not with
+SObjects.
 
 ```java
 /*
