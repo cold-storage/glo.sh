@@ -1,3 +1,12 @@
+Some RESTish web services serve up JSON with null values. 
+Often you don't want to overwrite Salesforce values with null. 
+For example, your Salesforce Contact, Joe, has an email address, but
+the external system you are syncing with doesn't. You don't
+want to overwrite Joe's email with null.
+In your Salesforce Apex code when you turn this JSON into an 
+SObject, it keeps the nulls (even if you specify suppressApexObjectNulls).
+This method removes the nulls.
+
 ```java
 /*
 
