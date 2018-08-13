@@ -1,8 +1,11 @@
+The following is all it takes to run multiple different sites with 
+free, auto-renewing SSL certs.
+
 ```
-https://www.ssllabs.com/ssltest/analyze.html?d=sfio.candoris.com
 https://github.com/jwilder/nginx-proxy
 https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion
 https://cloud.google.com/community/tutorials/nginx-reverse-proxy-docker
+https://www.ssllabs.com/ssltest/analyze.html?d=sfio.candoris.com
 
 docker run -d -p 80:80 -p 443:443 \
     --name proxy \
