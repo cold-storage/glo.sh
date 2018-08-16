@@ -16,6 +16,7 @@ free, auto-renewing SSL certs.
 # to work.
 docker run -d -p 80:80 -p 443:443 \
     --name proxy \
+    --restart unless-stopped \
     -v /etc/certs:/etc/nginx/certs:ro \
     -v /etc/nginx/vhost.d \
     -v /usr/share/nginx/html \
@@ -28,6 +29,7 @@ docker run -d -p 80:80 -p 443:443 \
 # You never have to do anything forever :)
 docker run -d \
     --name companion \
+    --restart unless-stopped \
     --volumes-from proxy \
     -v /etc/certs:/etc/nginx/certs:rw \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
@@ -36,6 +38,7 @@ docker run -d \
 # Here's an example virtual host running default nginx.
 docker run -d \
     --name rothman \
+    --restart unless-stopped \
     -e 'LETSENCRYPT_EMAIL=jstein@candoris.com' \
     -e 'LETSENCRYPT_HOST=rothman.candoris.com' \
     -e 'VIRTUAL_HOST=rothman.candoris.com' nginx
@@ -43,6 +46,7 @@ docker run -d \
 # Here's an example virtual host running default httpd.
 docker run -d \
     --name sfio \
+    --restart unless-stopped \
     -e 'LETSENCRYPT_EMAIL=jstein@candoris.com' \
     -e 'LETSENCRYPT_HOST=sfio.candoris.com' \
     -e 'VIRTUAL_HOST=sfio.candoris.com' httpd
