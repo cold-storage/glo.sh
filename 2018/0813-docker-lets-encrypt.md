@@ -3,11 +3,11 @@
 The following is all it takes to run multiple different sites with 
 free, auto-renewing SSL certs.
 
-```
-https://github.com/jwilder/nginx-proxy
-https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion
-https://www.ssllabs.com/ssltest/analyze.html?d=sfio.candoris.com
+* https://github.com/jwilder/nginx-proxy
+* https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion
+* https://www.ssllabs.com/ssltest/analyze.html?d=sfio.candoris.com
 
+```sh
 # Nginx Proxy automatically configures nginx to reverse proxy
 # to any docker container with a VIRTUAL_HOST parameter 
 # (like 'rothman' and 'sfio' below).
