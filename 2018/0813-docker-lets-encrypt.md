@@ -23,8 +23,9 @@ docker run -d -p 80:80 -p 443:443 \
     --label com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true \
     jwilder/nginx-proxy
 
-# This guy magically gives you free SSL certs for each of your
-# virtual hosts.
+# Proxy companion magically gives you free SSL certs for each of your
+# virtual hosts. The certs are automatically created and renewed.
+# You never have to do anything forever :)
 docker run -d \
     --name companion \
     --volumes-from proxy \
