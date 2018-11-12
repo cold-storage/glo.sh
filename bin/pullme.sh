@@ -13,6 +13,6 @@ cd $MY_DIR
 cd ..
 OUTPUT="$(git pull)"
 
-if [[ "$OUTPUT" != *"Already up-to-date"* ]]; then
+if [[ "$OUTPUT" != *"Already"* ]]; then
   $MY_DIR/deploy.sh
 fi
